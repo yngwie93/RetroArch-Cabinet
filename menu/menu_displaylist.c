@@ -1405,19 +1405,21 @@ static int menu_displaylist_parse_horizontal_list(menu_displaylist_info_t *info)
 
 static int menu_displaylist_parse_options(menu_displaylist_info_t *info)
 {
-   global_t *global            = global_get_ptr();
+   menu_handle_t *menu    = menu_driver_get_ptr();
+   global_t *global       = global_get_ptr();
 
-   menu_list_push(info->list, "Core Options", "core_options",
-         MENU_SETTING_ACTION, 0);
-   if (global->main_is_init)
+   // MENU BRANCH: make core related options appear only when available
+   if (global->main_is_init && !global->libretro_dummy)
    {
+      menu_list_push(info->list, "Core Options", "core_options",
+            MENU_SETTING_ACTION, 0);
       if (global->has_set_input_descriptors)
-         menu_list_push(info->list, "Core Input Remapping Options", "core_input_remapping_options",
+         menu_list_push(info->list, "Input Mapping", "core_input_remapping_options",
                MENU_SETTING_ACTION, 0);
-      menu_list_push(info->list, "Core Cheat Options", "core_cheat_options",
+      menu_list_push(info->list, "Cheats", "core_cheat_options",
             MENU_SETTING_ACTION, 0);
       if (!global->libretro_dummy && global->system.disk_control.get_num_images)
-         menu_list_push(info->list, "Core Disk Options", "disk_options",
+         menu_list_push(info->list, "Disk Options", "disk_options",
                MENU_SETTING_ACTION, 0);
    }
    menu_list_push(info->list, "Video Options", "video_options",

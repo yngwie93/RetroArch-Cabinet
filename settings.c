@@ -3289,7 +3289,7 @@ static bool setting_append_list_main_menu_options(
 #ifdef HAVE_LIBRETRODB
    CONFIG_ACTION(
          "content_collection_list",
-         "Load Content (Collection)",
+         "Content Library",
          group_info.name,
          subgroup_info.name);
 #endif
@@ -3298,22 +3298,31 @@ static bool setting_append_list_main_menu_options(
    {
       CONFIG_ACTION(
             "history_list",
-            "Load Content (History)",
+            "Content History",
             group_info.name,
             subgroup_info.name);
    }
+
+   /* MENU BRANCH: make it so that only one Load Content entry appears,
+      if no core is selected it should behave like "Detect Core",
+      if a core is selected it should behave like "Load Content"*/
+
+   // TODO: repopulate main menu after a core has been selected to make this appear
+
    if (
          driver->menu 
          && global->core_info 
-         && core_info_list_num_info_files(global->core_info))
+         && core_info_list_num_info_files(global->core_info)
+		 && strcmp(global->system.info.library_name, "No Core") == 0)
    {
       CONFIG_ACTION(
             "detect_core_list",
-            "Load Content (Detect Core)",
+            "Load Content",
             group_info.name,
             subgroup_info.name);
       settings_data_list_current_add_flags(list, list_info, SD_FLAG_BROWSER_ACTION);
    }
+   else
    CONFIG_ACTION(
          "load_content",
          "Load Content",
@@ -3337,19 +3346,24 @@ static bool setting_append_list_main_menu_options(
                subgroup_info.name);
       settings_list_current_add_cmd(list, list_info, EVENT_CMD_UNLOAD_CORE);
    }
+   // TODO: repopulate main menu after a core has been selected to make this appear
+   if(strcmp(global->system.info.library_name, "No Core") != 0)
+   {
+      CONFIG_ACTION(
+            "core_information",
+            "Core Information",
+            group_info.name,
+            subgroup_info.name);
+   }
 
-   CONFIG_ACTION(
-         "core_information",
-         "Core Information",
-         group_info.name,
-         subgroup_info.name);
-
+// MENU BRANCH: this option is only interesting for dev purposes so far, hide it for the time being
+#if 0
    CONFIG_ACTION(
          "management",
          "Management",
          group_info.name,
          subgroup_info.name);
-
+#endif
    CONFIG_ACTION(
          "options",
          "Options",
