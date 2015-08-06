@@ -2577,14 +2577,14 @@ static bool setting_append_list_main_menu_options(
             parent_group);
    }
 
-   /*
+#if 0
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_INFORMATION_LIST),
          menu_hash_to_str(MENU_LABEL_VALUE_INFORMATION_LIST),
          group_info.name,
          subgroup_info.name,
          parent_group);
-         */
+#endif
 
 #ifndef HAVE_DYNAMIC
    CONFIG_ACTION(
@@ -2596,7 +2596,7 @@ static bool setting_append_list_main_menu_options(
    menu_settings_list_current_add_cmd(list, list_info, EVENT_CMD_RESTART_RETROARCH);
 #endif
 
-   /*
+#if 0
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_CONFIGURATIONS),
          menu_hash_to_str(MENU_LABEL_VALUE_CONFIGURATIONS),
@@ -2618,7 +2618,7 @@ static bool setting_append_list_main_menu_options(
          group_info.name,
          subgroup_info.name,
          parent_group);
-         */
+#endif
 
 #if !defined(IOS)
    /* Apple rejects iOS apps that lets you forcibly quit an application. */
