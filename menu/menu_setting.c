@@ -1094,7 +1094,7 @@ static int setting_string_action_right_driver(void *data,
    return 0;
 }
 
-#if defined(HAVE_DYNAMIC) || defined(HAVE_LIBRETRO_MANAGEMENT)
+#if 0
 static int core_list_action_toggle(void *data, bool wraparound)
 {
    rarch_setting_t *setting  = (rarch_setting_t *)data;
@@ -2511,7 +2511,7 @@ static bool setting_append_list_main_menu_options(
             parent_group);
    }
 
-#if defined(HAVE_DYNAMIC) || defined(HAVE_LIBRETRO_MANAGEMENT)
+#if 0
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_CORE_LIST),
          menu_hash_to_str(MENU_LABEL_VALUE_CORE_LIST),
@@ -2532,8 +2532,8 @@ static bool setting_append_list_main_menu_options(
 #endif
 
    CONFIG_ACTION(
-         menu_hash_to_str(MENU_LABEL_LOAD_CONTENT_LIST),
-         menu_hash_to_str(MENU_LABEL_VALUE_LOAD_CONTENT_LIST),
+         menu_hash_to_str(MENU_LABEL_DETECT_CORE_LIST),
+         menu_hash_to_str(MENU_LABEL_VALUE_DETECT_CORE_LIST),
          group_info.name,
          subgroup_info.name,
          parent_group);
@@ -2548,7 +2548,7 @@ static bool setting_append_list_main_menu_options(
             parent_group);
    }
 
-#if defined(HAVE_NETWORKING) || defined(HAVE_LIBRETRODB)
+#if 0
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_ADD_CONTENT_LIST),
          menu_hash_to_str(MENU_LABEL_VALUE_ADD_CONTENT_LIST),
@@ -2557,7 +2557,7 @@ static bool setting_append_list_main_menu_options(
          parent_group);
 #endif
 
-#ifdef HAVE_NETWORKING
+#if 0
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_ONLINE_UPDATER),
          menu_hash_to_str(MENU_LABEL_VALUE_ONLINE_UPDATER),
@@ -2577,12 +2577,14 @@ static bool setting_append_list_main_menu_options(
             parent_group);
    }
 
+   /*
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_INFORMATION_LIST),
          menu_hash_to_str(MENU_LABEL_VALUE_INFORMATION_LIST),
          group_info.name,
          subgroup_info.name,
          parent_group);
+         */
 
 #ifndef HAVE_DYNAMIC
    CONFIG_ACTION(
@@ -2594,6 +2596,7 @@ static bool setting_append_list_main_menu_options(
    menu_settings_list_current_add_cmd(list, list_info, EVENT_CMD_RESTART_RETROARCH);
 #endif
 
+   /*
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_CONFIGURATIONS),
          menu_hash_to_str(MENU_LABEL_VALUE_CONFIGURATIONS),
@@ -2615,6 +2618,7 @@ static bool setting_append_list_main_menu_options(
          group_info.name,
          subgroup_info.name,
          parent_group);
+         */
 
 #if !defined(IOS)
    /* Apple rejects iOS apps that lets you forcibly quit an application. */
