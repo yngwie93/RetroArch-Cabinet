@@ -1147,7 +1147,7 @@ const char *menu_hash_to_str_us(uint32_t hash)
       case MENU_LABEL_VALUE_SETTINGS:
          return "Settings";
       case MENU_LABEL_VALUE_QUIT_RETROARCH:
-         return "";
+         return "This game didn't work.";
       case MENU_LABEL_VALUE_HELP:
          return "help";
       case MENU_LABEL_VALUE_SAVE_NEW_CONFIG:
