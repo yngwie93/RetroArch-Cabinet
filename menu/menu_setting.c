@@ -2501,6 +2501,7 @@ static bool setting_append_list_main_menu_options(
    START_GROUP(group_info,main_menu, parent_group);
    START_SUB_GROUP(list, list_info, "State", group_info.name, subgroup_info, parent_group);
 
+#if 0
    if (global->inited.main && (global->inited.core.type != CORE_TYPE_DUMMY))
    {
       CONFIG_ACTION(
@@ -2510,6 +2511,7 @@ static bool setting_append_list_main_menu_options(
             subgroup_info.name,
             parent_group);
    }
+#endif
 
 #if 0
    CONFIG_ACTION(
@@ -2531,6 +2533,7 @@ static bool setting_append_list_main_menu_options(
    settings_data_list_current_add_flags(list, list_info, SD_FLAG_BROWSER_ACTION);
 #endif
 
+#if 0
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_DETECT_CORE_LIST),
          menu_hash_to_str(MENU_LABEL_VALUE_DETECT_CORE_LIST),
@@ -2547,6 +2550,7 @@ static bool setting_append_list_main_menu_options(
             subgroup_info.name,
             parent_group);
    }
+#endif
 
 #if 0
    CONFIG_ACTION(
@@ -2566,7 +2570,7 @@ static bool setting_append_list_main_menu_options(
          parent_group);
 #endif
 
-
+#if 0
    if (mask & SL_FLAG_MAIN_MENU_SETTINGS)
    {
       CONFIG_ACTION(
@@ -2576,6 +2580,7 @@ static bool setting_append_list_main_menu_options(
             subgroup_info.name,
             parent_group);
    }
+#endif
 
 #if 0
    CONFIG_ACTION(
@@ -2586,6 +2591,7 @@ static bool setting_append_list_main_menu_options(
          parent_group);
 #endif
 
+#if 0
 #ifndef HAVE_DYNAMIC
    CONFIG_ACTION(
          menu_hash_to_str(MENU_LABEL_RESTART_RETROARCH),
@@ -2594,6 +2600,7 @@ static bool setting_append_list_main_menu_options(
          subgroup_info.name,
          parent_group);
    menu_settings_list_current_add_cmd(list, list_info, EVENT_CMD_RESTART_RETROARCH);
+#endif
 #endif
 
 #if 0
